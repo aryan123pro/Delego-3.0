@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import 'package:delego/constants/sponsors.dart';
+import 'package:delego/widgets/sponsor_video.dart';
+
 class SponsorPage extends StatelessWidget {
   const SponsorPage({super.key});
 
@@ -9,13 +12,6 @@ class SponsorPage extends StatelessWidget {
     final textTheme = Theme.of(context).textTheme;
     final size = MediaQuery.of(context).size;
 
-    final sponsors = [
-      'assets/icons/toshiba.png',
-      'assets/icons/bae.png',
-      'assets/icons/basant.png',
-      'assets/icons/citrus.png',
-      'assets/icons/tpark.png',
-    ];
 
     return Scaffold(
       backgroundColor: scheme.surface,
@@ -37,9 +33,11 @@ class SponsorPage extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: ListView.separated(
-            itemCount: sponsors.length,
+            itemCount: kSponsors.length + 1, // +1 = the video card at the top
             separatorBuilder: (_, __) => const SizedBox(height: 24),
             itemBuilder: (context, index) {
+              if (index == 0) return const SponsorVideoCard();
+              final sponsor = kSponsors[index - 1];
               return Card(
                 elevation: 4,
                 shadowColor: scheme.shadow.withValues(alpha: 0.2),
@@ -51,7 +49,7 @@ class SponsorPage extends StatelessWidget {
                   padding: const EdgeInsets.all(20),
                   child: Center(
                     child: Image.asset(
-                      sponsors[index],
+                      sponsor,
                       height: size.height * 0.2, // 20% of screen height
                       fit: BoxFit.contain,
                     ),

@@ -1,3 +1,4 @@
+import 'package:delego/widgets/mun_logo.dart';
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -88,15 +89,17 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Logo
-                Container(
-                  height: 160,
-                  width: 160,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  child: Image.asset(
-                    "assets/icons/logo.png",
-                    fit: BoxFit.contain,
+                MunLogoLink(
+                  child: Container(
+                    height: 160,
+                    width: 160,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
+                    child: Image.asset(
+                      "assets/images/logo_solid.webp",
+                      fit: BoxFit.contain,
+                    ),
                   ),
                 ),
 
@@ -106,7 +109,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 Text(
                   'DELEGO',
                   style: textTheme.headlineMedium?.copyWith(
-                    color: scheme.primary,
+                    color: scheme.tertiary,
                     fontWeight: FontWeight.bold,
                     letterSpacing: 1.2,
                   ),
@@ -187,7 +190,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       child: Text(
                         'Login',
                         style: textTheme.bodyMedium?.copyWith(
-                          color: scheme.primary,
+                          color: scheme.tertiary,
                           fontWeight: FontWeight.w600,
                         ),
                       ),
